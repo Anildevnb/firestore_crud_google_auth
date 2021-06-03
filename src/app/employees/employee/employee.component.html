@@ -1,6 +1,13 @@
 <h4>Register</h4>
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
   <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+  <div class="form-group">    
+    <select #department="ngModel" id="department" name="department" [(ngModel)]="service.formData.department" class="form-control">
+      <option value="" selected>Select Departmant</option>
+      <option *ngFor="let dep of list" value="{{dep.departmentName}}">{{dep.departmentName}} - {{dep.departmentCode}}</option>
+    </select>
+    <div *ngIf="department.invalid && department.touched" class="validation-error">This field is required.</div>
+  </div>
   <div class="form-group">
     <input name="fullName" #fullName="ngModel" [(ngModel)]="service.formData.fullName" class="form-control" placeholder="Name" required>
     <div *ngIf="fullName.invalid && fullName.touched" class="validation-error">This field is required.</div>

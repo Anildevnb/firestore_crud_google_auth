@@ -1,7 +1,8 @@
 <h4>Employers List</h4>
 <div class="responsive">
-<table class="table table-hover table-bordered" *ngIf="(list.length > 0)">
+<table class="table table-hover table-bordered" >
     <thead>
+      <th>Departmant</th>
       <th>Name</th>
       <th>Role</th>
       <th>Phone Number</th>
@@ -9,15 +10,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let emp of list">
+        <td (click)="onEdit(emp)">{{emp.department}}</td>
         <td (click)="onEdit(emp)">{{emp.empCode}} - {{emp.fullName | titlecase}}</td>
         <td (click)="onEdit(emp)">{{emp.position | titlecase}}</td>
         <td (click)="onEdit(emp)">{{emp.mobile}}</td>
-        <td><a class="btn text-danger" (click)="onDelete(emp.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+        <td><a role="button" class="btn btn-danger" (click)="onDelete(emp.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>
         </a></td>
       </tr>
     </tbody>
   </table>
-  <div class="alert alert-danger" role="alert" *ngIf="(list.length == 0)">
+  <!-- <div class="alert alert-danger" role="alert" *ngIf="(list.length == 0)">
     Employee List Empty
-  </div>
+  </div> -->
 </div>

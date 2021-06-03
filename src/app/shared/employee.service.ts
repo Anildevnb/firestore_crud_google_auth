@@ -13,4 +13,7 @@ export class EmployeeService {
   getEmployees() {
     return this.firestore.collection('employees').snapshotChanges();
   }
+  getDepartments() {
+    return this.firestore.collection('department').snapshotChanges();
+  }
 }

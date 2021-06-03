@@ -1,0 +1,21 @@
+<h4>Department List</h4>
+<div class="responsive">
+<table class="table table-hover table-bordered">
+    <thead>
+    <th>Department Code</th>
+      <th>Department Name</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dep of list">
+        <td (click)="onEdit(dep)">{{dep.departmentCode}}</td>
+        <td (click)="onEdit(dep)">{{dep.departmentName | titlecase}}</td>
+        <td><a class="btn btn-danger" (click)="onDelete(dep.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+        </a></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <div class="alert alert-danger" role="alert" *ngIf="(list.length == 0)">
+    Department List Empty
+  </div> -->
+</div>

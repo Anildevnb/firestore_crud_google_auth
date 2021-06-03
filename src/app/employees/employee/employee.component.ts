@@ -3,6 +3,7 @@ import { EmployeeService } from 'src/app/shared/employee.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { Department } from 'src/app/shared/department.model';
 
 @Component({
   selector: 'app-employee',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-
+  list!: Department[];
   constructor(public service: EmployeeService,
     private firestore: AngularFirestore,
     private toastr: ToastrService) { }
@@ -18,6 +19,17 @@ export class EmployeeComponent implements OnInit {
  
   ngOnInit() {
     this.resetForm();
+
+    this.service.getDepartments().subscribe(actionArray => {
+      
+      this.list = actionArray.map(item => {
+        return {
+          id: item.payload.doc.id,
+          ...(item.payload.doc.data() as object)
+        } as Department;
+      })
+    });
+   
   }
 
   resetForm(form?: NgForm) {
@@ -25,6 +37,7 @@ export class EmployeeComponent implements OnInit {
       form.resetForm();
     this.service.formData = {
       id: null,
+      department: '',
       fullName: '',
       position: '',
       empCode: '',

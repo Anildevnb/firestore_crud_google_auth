@@ -19,6 +19,9 @@ import { EmployeeService } from './shared/employee.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SnackbarModule } from 'ngx-snackbar';
+import { DepartmentsComponent } from './departments/departments.component';
+import { DepartmentComponent } from './departments/department/department.component';
+import { DepartmentListComponent } from './departments/department-list/department-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,10 @@ import { SnackbarModule } from 'ngx-snackbar';
     LoginComponent,
     EmployeesComponent,
     EmployeeComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    DepartmentsComponent,
+    DepartmentComponent,
+    DepartmentListComponent
   ],
   imports: [
     BrowserModule,
