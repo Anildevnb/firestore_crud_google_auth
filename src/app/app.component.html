@@ -1,0 +1,18 @@
+
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="auth.isLoggedIn">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/employees">Home</a>
+    <a class="nav-item nav-link" routerLink="/profile">Profile</a>
+      <a class="nav-item nav-link" (click)="auth.signOut()">Logout</a>
+  </div>
+</nav>
+<div class="jumbotron fill">
+  <div class="container " >     
+        <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+
+

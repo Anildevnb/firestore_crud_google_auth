@@ -1,0 +1,39 @@
+<section class="h-100">
+    <header class="container h-100">
+      <div class="d-flex align-items-center justify-content-center h-100">
+        <div class="d-flex flex-column">
+            <div class="card" style="width: 30rem;">
+                <div class="card-body text-center">
+                    <div *ngIf="auth.user$ | async; then authenticated else guest">
+                        <!-- template will replace this div -->
+                    </div>
+                    
+                    <!-- User NOT logged in -->
+                    <ng-template #guest>
+                    <h3>Hello, GUEST</h3>
+                    <p>Login to get started...</p>
+                    </ng-template>
+                    
+                    
+                    
+                    
+                    <!-- User logged in -->
+                    <ng-template #authenticated>
+                    <div *ngIf="auth.user$ | async as user">
+                        <h3>Welcome, {{ user.displayName }}</h3>
+                        <img  [src]="user.photoURL">
+                        <p>Email: {{ user.email }}</p>
+                        <p>Id: {{ user.uid }}</p>
+                    </div>
+                    </ng-template>
+            </div>
+            </div>
+        </div>
+      </div>
+    </header>
+  </section>
+
+
+
+
+
